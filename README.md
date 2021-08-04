@@ -1,3 +1,5 @@
+# Travel Journal App
+
 
 #TerserWebpackPlugin
 If you are using webpack v5 or above you do not need to install this plugin. Webpack v5 comes with the latest terser-webpack-plugin out of the box
