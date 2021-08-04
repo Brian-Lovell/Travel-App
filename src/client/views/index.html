@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather Journal App</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+        <script src="/app.js" type="text/javascript" async></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700&display=swap" rel="stylesheet">
+        <!-- TODO: Create icon -->
+        <!-- <link rel='icon' href="favicon.ico" -->
+    </head>
+    <body>
+        <div class="container">
+            <header><h1>Weather Journal</h1></header>
+            <nav>
+                <ul>
+                    <li>
+                        <label for="feelings">
+                            <h2>How are you feeling today?</h2>    
+                        </label> 
+                    </li>
+                    <li><textarea class= "myInput" id ="feelings" placeholder="Enter your feelings here" rows="5" cols="25"></textarea></li>
+                    <li><input id="zip" placeholder="Enter Zip Code here"></li>
+                    <li><button id="generate">Submit</button></li>
+                </ul>
+            </nav>
+            <main>
+                <div id="entryHolder">
+                    <h3>Most recent entry:</h3>
+                    <h4>Date</h4>
+                    <div class="weather" id="date"></div>
+                    <h4>Temperature in Fahrenheit:</h4>
+                    <div class="weather" id="temp"></div>
+                    <h4>Feeling Today:</h4>
+                    <div class="weather" id ="content"></div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+    </body>
+</html>
