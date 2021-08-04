@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,29 +15,28 @@
     </head>
     <body>
         <div class="container">
-            <header><h1>Weather Journal</h1></header>
+            <header><h1>Travel Planning App</h1></header>
             <nav>
-                <ul>
-                    <li>
-                        <label for="feelings">
-                            <h2>How are you feeling today?</h2>    
-                        </label> 
-                    </li>
-                    <li><textarea class= "myInput" id ="feelings" placeholder="Enter your feelings here" rows="5" cols="25"></textarea></li>
-                    <li><input id="zip" placeholder="Enter Zip Code here"></li>
-                    <li><button id="generate">Submit</button></li>
-                </ul>
             </nav>
             <main>
-                <div id="entryHolder">
-                    <h3>Most recent entry:</h3>
-                    <h4>Date</h4>
-                    <div class="weather" id="date"></div>
-                    <h4>Temperature in Fahrenheit:</h4>
-                    <div class="weather" id="temp"></div>
-                    <h4>Feeling Today:</h4>
-                    <div class="weather" id ="content"></div>
-                </div>
+                <section id="formSection">
+                    <form class="" id="form">
+                        <input id="tripDate" type="text" name="input" value="" placeholder="Enter date of trip">
+                        <input id="location" type="text" name="input" value="" placeholder="Enter city name">
+                        <input title="Access key is alt+s" type="submit" name="" value="Plan Trip!" accesskey="s">
+                    </form>
+                </section>
+                <section id="resultsSection">
+                    <h3>My planned trip!:</h3>
+                    <h4>Date:</h4>
+                    <div class="results" id="resultsDate"></div>
+                    <h4>Location:</h4>
+                    <div class="results" id="resultsLocation"></div>
+                    <h4>Forecast:</h4>
+                    <div class="results" id ="resultsForecast"></div>
+                    <h4>Location image:</h4>
+                    <div class="results" id ="resultsImage"></div>
+                </section>
             </main>
             <footer></footer>
         </div>
