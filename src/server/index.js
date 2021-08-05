@@ -61,34 +61,3 @@ app.post('/submit', async function (req, res){
     res.send(geoAPIData)
 
 })
-
-
-// app.post('/analyze', async function (req, res) {
-//     const apiURL = 'https://api.meaningcloud.com/sentiment-2.1'
-//     const formdata = new FormData()
-
-//     formdata.append("key", process.env.API_KEY)
-//     // formdata.append("txt", "")
-//     formdata.append("lang", "en")
-//     formdata.append("of","json")
-//     formText = req.body.url
-//     formdata.append("url", formText)
-
-//     const requestOptions = {
-//         method: 'POST',
-//         mode: 'cors',
-//         body: formdata,
-//         redirect: 'follow'
-//     }
-
-//     let response = await fetch(apiURL, requestOptions)
-//     let data = await response.json()
-
-//     apiData.score = data.score_tag
-//     apiData.agreement = data.agreement
-//     apiData.subjectivity = data.subjectivity
-//     apiData.confidence = data.confidence
-//     apiData.irony = data.irony
-//     res.send(apiData)
-//     console.log(apiData)
-// })
