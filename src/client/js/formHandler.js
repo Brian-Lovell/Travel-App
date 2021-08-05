@@ -18,7 +18,7 @@ function handleSubmit(event) {
         },
         body: JSON.stringify({text: formLocation})
     })
-    .then(res => res.json())
+    // .then(res => res.json())
     // if (checkForName(formText)) {
     //     console.log("::: Form Submitted :::")
     //     fetch('http://localhost:2076/analyze', {
