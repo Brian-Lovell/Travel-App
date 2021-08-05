@@ -53,7 +53,10 @@ app.post('/submit', async function (req, res){
     let data = await response.json()
     console.log(data)
 
-    geoAPIData = data.body
+    geoAPIData.cityName = data.name
+    geoAPIData.country = data.countryName
+    geoAPIData.latitude = data.lat
+    geoAPIData.longitude = data.lng
     console.log(geoAPIData)
     res.send(geoAPIData)
 
