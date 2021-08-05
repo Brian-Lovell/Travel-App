@@ -30,7 +30,7 @@ app.use(express.static('dist'))
 
 
 //API endpoint
-apiData = {}
+geoAPIData = {}
 
 // Get Route
 app.get('/', function (req, res) {
@@ -38,6 +38,31 @@ app.get('/', function (req, res) {
 })
 
 // Post route 
+app.post('/submit', async function (req, res){
+    const geonamesAPIURL = 'http://api.geonames.org/postalCodeSearch?'
+    const geoFormData = new FormData()
+    let formLocation = req.body.text
+    const geoRequestOptions = {
+        method: 'POST',
+        mode: 'cors',
+        body: geoFormData,
+        redirect: 'follow'
+    }
+
+    // Form Data Options
+    geoFormData.append("username", process.env.GEONAMES_USERNAME)
+    geoFormData.append("postalcode", formLocation)
+
+    let response = await fetch(geonamesAPIURL, geoRequestOptions)
+    let data = await response.json()
+
+    geoAPIData = data.body
+    console.log(geoAPIData)
+    res.send(geoAPIData)
+
+})
+
+
 // app.post('/analyze', async function (req, res) {
 //     const apiURL = 'https://api.meaningcloud.com/sentiment-2.1'
 //     const formdata = new FormData()
