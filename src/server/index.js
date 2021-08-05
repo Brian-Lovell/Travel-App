@@ -39,27 +39,15 @@ app.get('/', function (req, res) {
 
 // Post route 
 app.post('/submit', async function (req, res){
-    // Example URL
-    // http://api.geonames.org/searchJSON?q=West%20Haven&username=briar_cudge
-    // const geoFormData = new FormData()
-    // const geonamesAPIURL = 'http://api.geonames.org/searchJSON?'
-
     const geonamesUser = process.env.GEONAMES_USERNAME
     let formLocation = req.body.text
     const fetchGeoURL = `http://api.geonames.org/searchJSON?q=${formLocation}&maxRows=1&username=${geonamesUser}`
-
-
     const geoRequestOptions = {
         method: 'POST',
         mode: 'cors',
         body:JSON.stringify(fetchGeoURL),
         redirect: 'follow'
     }
-
-    // Form Data Options
-    // geoFormData.append("username", process.env.GEONAMES_USERNAME)
-    // geoFormData.append("postalcode", formLocation)
-    // console.log(geoFormData)
 
     let response = await fetch(fetchGeoURL, geoRequestOptions)
     let data = await response.json()
