@@ -30,7 +30,7 @@ app.use(express.static('dist'))
 
 
 //API endpoint
-geoAPIData = {}
+geoAPIData = []
 
 // Get Route
 app.get('/', function (req, res) {
@@ -53,10 +53,10 @@ app.post('/submit', async function (req, res){
     let data = await response.json()
     console.log(data)
 
-    geoAPIData.cityName = data.name
-    geoAPIData.country = data.countryName
-    geoAPIData.latitude = data.lat
-    geoAPIData.longitude = data.lng
+    geoAPIData.cityName = data.geonames[0].name
+    geoAPIData.country = data.geonames[0].countryName
+    geoAPIData.latitude = data.geonames[0].lat
+    geoAPIData.longitude = data.geonames[0].lng
     console.log(geoAPIData)
     res.send(geoAPIData)
 
