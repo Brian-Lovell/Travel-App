@@ -52,9 +52,11 @@ app.post('/submit', async function (req, res){
     // Form Data Options
     geoFormData.append("username", process.env.GEONAMES_USERNAME)
     geoFormData.append("postalcode", formLocation)
+    console.log(geoFormData)
 
     let response = await fetch(geonamesAPIURL, geoRequestOptions)
     let data = await response.json()
+    console.log(data)
 
     geoAPIData = data.body
     console.log(geoAPIData)
