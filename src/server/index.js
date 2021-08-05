@@ -60,4 +60,6 @@ app.post('/submit', async function (req, res){
     console.log(geoAPIData)
     res.send(geoAPIData)
 
+    .then
+
 })
