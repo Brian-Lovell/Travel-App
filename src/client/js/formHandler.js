@@ -8,6 +8,17 @@ function handleSubmit(event) {
     let formLocation = document.getElementById('location').value
     console.log(formDate)
     console.log(formLocation)
+
+    fetch('http://localhost:2076/submit', {
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({text: formLocation})
+    })
+    .then(res => res.json())
     // if (checkForName(formText)) {
     //     console.log("::: Form Submitted :::")
     //     fetch('http://localhost:2076/analyze', {
