@@ -92,7 +92,8 @@ async function fetchWeather(apiData) {
 async function fetchPixabay(apiData) {
     // fetch to pixabay
     const pixabayAPI = process.env.PIXABAY_API_KEY
-    const pixabayURL = `https://pixabay.com/api/?key=${pixabayAPI}&q=${apiData.cityName}`
+    const category = "travel"
+    const pixabayURL = `https://pixabay.com/api/?key=${pixabayAPI}&q=${apiData.cityName}&category=${category}`
     console.log(pixabayURL)
 
     const pixabayOptions = {
@@ -104,7 +105,7 @@ async function fetchPixabay(apiData) {
     let response = await fetch(pixabayURL, pixabayOptions)
     let data = await response.json()
     console.log(data)
-    apiData.picture = data.body
+    apiData.picture = data.hits[0].webformatURL
     console.log(apiData.picture)
     return apiData
 }
