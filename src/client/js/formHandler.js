@@ -18,27 +18,15 @@ function handleSubmit(event) {
         },
         body: JSON.stringify({text: formLocation})
     })
-    // .then(res => res.json())
-    // if (checkForName(formText)) {
-    //     console.log("::: Form Submitted :::")
-    //     fetch('http://localhost:2076/analyze', {
-    //         method: 'POST',
-    //         credentials: 'same-origin',
-    //         mode: 'cors',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({url: formText})
-    //     })
-    //     .then(res => res.json())
-    //     .then(function(res) {
-    //         document.getElementById('score').innerHTML = res.score
-    //         document.getElementById('agreement').innerHTML = res.agreement
-    //         document.getElementById('subjectivity').innerHTML = res.subjectivity
-    //         document.getElementById('confidence').innerHTML = res.confidence
-    //         document.getElementById('irony').innerHTML = res.irony
-        // })
-    // }
+
+    .then (res => res.json())
+    .then (res => {
+        document.getElementById('resultsDate').innerHTML = res.date
+        document.getElementById('resultsCityName').innerHTML = res.cityName
+        document.getElementById('resultsCountryName').innerHTML = res.country
+        document.getElementById('resultsForecast').innerHTML = res.weather
+        document.getElementById('resultsImage').innerHTML = res.picture
+    })
 }
 
 export { handleSubmit }
