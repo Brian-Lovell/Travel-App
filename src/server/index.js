@@ -29,9 +29,7 @@ app.use(cors())
 app.use(express.static('dist'))
 
 
-//API endpoints
-// geoAPIData = []
-// weatherbitData = []
+//API endpoint
 apiData = []
 
 // Get Route
@@ -44,6 +42,7 @@ app.post('/submit', async function (req, res){
     let formLocation = req.body.text
     let geoAPI = await fetchGeo(formLocation)
     let weatherAPI = await fetchWeather(apiData)
+    let pixabayAPI = await fetchPixabay(apiData)
     console.log(apiData)
     res.send(apiData)
 })
@@ -63,18 +62,12 @@ async function fetchGeo(formLocation) {
     let response = await fetch(fetchGeoURL, geoRequestOptions)
     let data = await response.json()
     console.log(data)
-
-    // geoAPIData.cityName = data.geonames[0].name
-    // geoAPIData.country = data.geonames[0].countryName
-    // geoAPIData.latitude = data.geonames[0].lat
-    // geoAPIData.longitude = data.geonames[0].lng
     apiData.cityName = data.geonames[0].name
     apiData.country = data.geonames[0].countryName
     apiData.latitude = data.geonames[0].lat
     apiData.longitude = data.geonames[0].lng
-    // console.log(geoAPIData)
     console.log(apiData)
-    // res.send(geoAPIData)
+
     return apiData
 }
 
@@ -93,8 +86,25 @@ async function fetchWeather(apiData) {
     console.log(data)
     apiData.weather = data.data[0].weather
     console.log(apiData.weather)
-    // weatherbitData = data.body
-    // console.log(weatherbitData)
-    // res.send(weatherbitData)
+    return apiData
+}
+
+async function fetchPixabay(apiData) {
+    // fetch to pixabay
+    const pixabayAPI = process.env.PIXABAY_API_KEY
+    const pixabayURL = `https://pixabay.com/api/?key=${pixabayAPI}&q=${apiData.cityName}`
+    console.log(pixabayURL)
+
+    const pixabayOptions = {
+        method: 'GET',
+        mode: 'cors',
+        redirect: 'follow'
+    }
+
+    let response = await fetch(pixabayURL, pixabayOptions)
+    let data = await response.json()
+    console.log(data)
+    apiData.picture = data.body
+    console.log(apiData.picture)
     return apiData
 }
