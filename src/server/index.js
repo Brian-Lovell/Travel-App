@@ -30,7 +30,7 @@ app.use(express.static('dist'))
 
 
 //API endpoint
-apiData = []
+apiData = {}
 
 // Get Route
 app.get('/', function (req, res) {
