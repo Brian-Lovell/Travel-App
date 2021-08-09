@@ -21,11 +21,24 @@ function handleSubmit(event) {
 
     .then (res => res.json())
     .then (res => {
+        const img = document.getElementById('resultsImage')
+        img.src = res.picture
+        img.alt = res.cityName
+
+        const weatherImg = document.getElementById('currentWeatherIcon')
+        weatherData = res.weather
+        console.log(weatherData)
+
+        iconCode = weatherData.icon
+        fileExt = ".png"
+        weatherIconImagePath = "./images" + "/" + iconCode + fileExt
+        weatherImg.src = weatherIconImagePath
+        weatherImg.alt = weatherData.icon
+
         document.getElementById('resultsDate').innerHTML = res.date
         document.getElementById('resultsCityName').innerHTML = res.cityName
         document.getElementById('resultsCountryName').innerHTML = res.country
-        document.getElementById('resultsForecast').innerHTML = res.weather
-        document.getElementById('resultsImage').innerHTML = res.picture
+        document.getElementById('currentWeatherDescription').innerHTML = weatherData.icon
     })
 }
 
