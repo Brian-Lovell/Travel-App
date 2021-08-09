@@ -59,11 +59,13 @@ app.post('/submit', async function (req, res){
     geoAPIData.latitude = data.geonames[0].lat
     geoAPIData.longitude = data.geonames[0].lng
     console.log(geoAPIData)
-    res.send(geoAPIData)
+    // res.send(geoAPIData)
 
-    .then( async (req, res) => {
+
+    async function fetchWeather(geoAPIData) {
         const weatherBitAPI = process.env.WEATHERBIT_API_KEY
-        const weatherBitURL = `https://api.weatherbit.io/v2.0/current?lat=${geoAPIData.latitude}&lon=${geoAPIData.longitud}&key=${weatherBitAPI}/`
+        const weatherBitURL = `https://api.weatherbit.io/v2.0/current?lat=${geoAPIData.latitude}&lon=${geoAPIData.longitude}&key=${weatherBitAPI}`
+        console.log(weatherBitURL)
         const weatherBitOptions = {
             method: 'GET' ,
             mode: 'cors',
@@ -75,8 +77,10 @@ app.post('/submit', async function (req, res){
         console.log(data)
         weatherbitData = data.body
         console.log(weatherbitData)
-        res.send(weatherbitData)
+        // res.send(weatherbitData)
 
-    })
+    }
+
+    fetchWeather(geoAPIData)
 
 })
