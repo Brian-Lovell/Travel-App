@@ -30,8 +30,9 @@ app.use(express.static('dist'))
 
 
 //API endpoints
-geoAPIData = []
-weatherbitData = []
+// geoAPIData = []
+// weatherbitData = []
+apiData = []
 
 // Get Route
 app.get('/', function (req, res) {
@@ -40,8 +41,17 @@ app.get('/', function (req, res) {
 
 // Post route 
 app.post('/submit', async function (req, res){
-    const geonamesUser = process.env.GEONAMES_USERNAME
     let formLocation = req.body.text
+    let geoAPI = await fetchGeo(formLocation)
+    let weatherAPI = await fetchWeather(apiData)
+    console.log(apiData)
+    res.send(apiData)
+})
+
+// Functions
+
+async function fetchGeo(formLocation) {
+    const geonamesUser = process.env.GEONAMES_USERNAME
     const fetchGeoURL = `http://api.geonames.org/searchJSON?q=${formLocation}&maxRows=1&username=${geonamesUser}`
     const geoRequestOptions = {
         method: 'POST',
@@ -54,33 +64,37 @@ app.post('/submit', async function (req, res){
     let data = await response.json()
     console.log(data)
 
-    geoAPIData.cityName = data.geonames[0].name
-    geoAPIData.country = data.geonames[0].countryName
-    geoAPIData.latitude = data.geonames[0].lat
-    geoAPIData.longitude = data.geonames[0].lng
-    console.log(geoAPIData)
+    // geoAPIData.cityName = data.geonames[0].name
+    // geoAPIData.country = data.geonames[0].countryName
+    // geoAPIData.latitude = data.geonames[0].lat
+    // geoAPIData.longitude = data.geonames[0].lng
+    apiData.cityName = data.geonames[0].name
+    apiData.country = data.geonames[0].countryName
+    apiData.latitude = data.geonames[0].lat
+    apiData.longitude = data.geonames[0].lng
+    // console.log(geoAPIData)
+    console.log(apiData)
     // res.send(geoAPIData)
+    return apiData
+}
 
-
-    async function fetchWeather(geoAPIData) {
-        const weatherBitAPI = process.env.WEATHERBIT_API_KEY
-        const weatherBitURL = `https://api.weatherbit.io/v2.0/current?lat=${geoAPIData.latitude}&lon=${geoAPIData.longitude}&key=${weatherBitAPI}`
-        console.log(weatherBitURL)
-        const weatherBitOptions = {
-            method: 'GET' ,
-            mode: 'cors',
-            redirect: 'follow'
-        }
-
-        let response = await fetch(weatherBitURL, weatherBitOptions)
-        let data = await response.json()
-        console.log(data)
-        weatherbitData = data.body
-        console.log(weatherbitData)
-        // res.send(weatherbitData)
-
+async function fetchWeather(apiData) {
+    const weatherBitAPI = process.env.WEATHERBIT_API_KEY
+    const weatherBitURL = `https://api.weatherbit.io/v2.0/current?lat=${apiData.latitude}&lon=${apiData.longitude}&key=${weatherBitAPI}`
+    console.log(weatherBitURL)
+    const weatherBitOptions = {
+        method: 'GET' ,
+        mode: 'cors',
+        redirect: 'follow'
     }
 
-    fetchWeather(geoAPIData)
-
-})
+    let response = await fetch(weatherBitURL, weatherBitOptions)
+    let data = await response.json()
+    console.log(data)
+    apiData.weather = data.data[0].weather
+    console.log(apiData.weather)
+    // weatherbitData = data.body
+    // console.log(weatherbitData)
+    // res.send(weatherbitData)
+    return apiData
+}
