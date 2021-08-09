@@ -21,24 +21,26 @@ function handleSubmit(event) {
 
     .then (res => res.json())
     .then (res => {
+        console.log(res)
+
+        // Add travel location image
         const img = document.getElementById('resultsImage')
         img.src = res.picture
         img.alt = res.cityName
 
+        // Add weather icon image
         const weatherImg = document.getElementById('currentWeatherIcon')
-        weatherData = res.weather
-        console.log(weatherData)
-
-        iconCode = weatherData.icon
+        iconCode = res.weather.icon
         fileExt = ".png"
         weatherIconImagePath = "./images" + "/" + iconCode + fileExt
         weatherImg.src = weatherIconImagePath
-        weatherImg.alt = weatherData.icon
+        weatherImg.alt = res.weather.description
 
+        // Add results
         document.getElementById('resultsDate').innerHTML = res.date
         document.getElementById('resultsCityName').innerHTML = res.cityName
         document.getElementById('resultsCountryName').innerHTML = res.country
-        document.getElementById('currentWeatherDescription').innerHTML = weatherData.icon
+        document.getElementById('currentWeatherDescription').innerHTML = res.weather.description
     })
 }
 
