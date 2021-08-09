@@ -29,8 +29,9 @@ app.use(cors())
 app.use(express.static('dist'))
 
 
-//API endpoint
+//API endpoints
 geoAPIData = []
+weatherbitData = []
 
 // Get Route
 app.get('/', function (req, res) {
@@ -60,6 +61,22 @@ app.post('/submit', async function (req, res){
     console.log(geoAPIData)
     res.send(geoAPIData)
 
-    .then
+    .then( async (req, res) => {
+        const weatherBitAPI = process.env.WEATHERBIT_API_KEY
+        const weatherBitURL = `https://api.weatherbit.io/v2.0/current?lat=${geoAPIData.latitude}&lon=${geoAPIData.longitud}&key=${weatherBitAPI}/`
+        const weatherBitOptions = {
+            method: 'GET' ,
+            mode: 'cors',
+            redirect: 'follow'
+        }
+
+        let response = await fetch(weatherBitURL, weatherBitOptions)
+        let data = await response.json()
+        console.log(data)
+        weatherbitData = data.body
+        console.log(weatherbitData)
+        res.send(weatherbitData)
+
+    })
 
 })
