@@ -61,12 +61,12 @@ async function fetchGeo(formLocation) {
 
     let response = await fetch(fetchGeoURL, geoRequestOptions)
     let data = await response.json()
-    console.log(data)
+    // console.log(data)
     apiData.cityName = data.geonames[0].name
     apiData.country = data.geonames[0].countryName
     apiData.latitude = data.geonames[0].lat
     apiData.longitude = data.geonames[0].lng
-    console.log(apiData)
+    // console.log(apiData)
 
     return apiData
 }
@@ -85,7 +85,7 @@ async function fetchWeather(apiData) {
     let data = await response.json()
     console.log(data)
     apiData.weather = data.data[0].weather
-    console.log(apiData.weather)
+    // console.log(apiData.weather)
     return apiData
 }
 
@@ -94,7 +94,7 @@ async function fetchPixabay(apiData) {
     const pixabayAPI = process.env.PIXABAY_API_KEY
     const category = "travel"
     const pixabayURL = `https://pixabay.com/api/?key=${pixabayAPI}&q=${apiData.cityName}&category=${category}`
-    console.log(pixabayURL)
+    // console.log(pixabayURL)
 
     const pixabayOptions = {
         method: 'GET',
@@ -104,8 +104,8 @@ async function fetchPixabay(apiData) {
 
     let response = await fetch(pixabayURL, pixabayOptions)
     let data = await response.json()
-    console.log(data)
+    // console.log(data)
     apiData.picture = data.hits[0].webformatURL
-    console.log(apiData.picture)
+    // console.log(apiData.picture)
     return apiData
 }
