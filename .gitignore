@@ -2,3 +2,4 @@ node_modules
 dist
 .env
 route.rest
+filename.txt
