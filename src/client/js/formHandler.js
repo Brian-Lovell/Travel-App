@@ -30,17 +30,17 @@ function handleSubmit(event) {
 
         // Add weather icon image
         const weatherImg = document.getElementById('currentWeatherIcon')
-        iconCode = res.weather.icon
-        fileExt = ".png"
-        weatherIconImagePath = "./images" + "/" + iconCode + fileExt
+        const iconCode = res.weather['icon']
+        const fileExt = ".png"
+        const weatherIconImagePath = "./images" + "/" + iconCode + fileExt
         weatherImg.src = weatherIconImagePath
-        weatherImg.alt = res.weather.description
+        weatherImg.alt = res.weather['description']
 
         // Add results
-        document.getElementById('resultsDate').innerHTML = res.date
+        document.getElementById('resultsDate').innerHTML = formDate
         document.getElementById('resultsCityName').innerHTML = res.cityName
         document.getElementById('resultsCountryName').innerHTML = res.country
-        document.getElementById('currentWeatherDescription').innerHTML = res.weather.description
+        document.getElementById('currentWeatherDescription').innerHTML = res.weather['description']
     })
 }
 
