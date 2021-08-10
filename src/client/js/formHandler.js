@@ -32,7 +32,7 @@ function handleSubmit(event) {
         const weatherImg = document.getElementById('currentWeatherIcon')
         const iconCode = res.weather['icon']
         const fileExt = ".png"
-        const weatherIconImagePath = "./images" + "/" + iconCode + fileExt
+        const weatherIconImagePath = "./src/client/images" + "/" + iconCode + fileExt
         weatherImg.src = weatherIconImagePath
         weatherImg.alt = res.weather['description']
 
