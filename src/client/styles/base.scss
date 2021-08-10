@@ -32,14 +32,61 @@ section {
     }
 }
 
-.section-form {
-    background-color: rgb(95, 178, 255);
-    border: rgb(95, 178, 255) solid 5px;
-    border-radius: 5%;
+#resultsSection {
+    display:grid;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "iH iH h h h"
+    "i i dH d d"
+    "i i lH ci co"
+    "i i fH wI wD";
+
+
+    h3 {
+        grid-area:h;
+    }
+    .dateH {
+        grid-area:dH;
+    }
+    .locationH{
+        grid-area:lH;
+    }
+    .forecastH {
+        grid-area:fH;
+    }
+    .imageH {
+        grid-area:iH;
+    }
+    #resultsDate {
+        grid-area:d;
+
+    }
+    #resultsCityName {
+        grid-area:ci;
+    }
+    #resultsCountryName {
+        grid-area:co;
+    }
+    #resultsImage {
+        grid-area:i;
+    }
+    #currentWeatherDescription {
+        grid-area:wD;
+    }
+    #currentWeatherIcon {
+        grid-area:wI;
+    }
+
 }
 
-.section-results {
-    background-color: rgb(175, 219, 255);
-    border: rgb(95, 178, 255) solid 5px;
-    border-radius: 5%;
-}
+// .section-form {
+//     background-color: rgb(95, 178, 255);
+//     border: rgb(95, 178, 255) solid 5px;
+//     border-radius: 5%;
+// }
+
+// .section-results {
+//     background-color: rgb(175, 219, 255);
+//     border: rgb(95, 178, 255) solid 5px;
+//     border-radius: 5%;
+// }
