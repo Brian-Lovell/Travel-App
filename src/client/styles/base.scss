@@ -34,12 +34,26 @@ section {
 
 #resultsSection {
     display:grid;
-    grid-template-columns: auto;
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr ;
     grid-template-areas:
     "iH iH h h h"
     "i i dH d d"
     "i i lH ci co"
     "i i fH wI wD";
+
+    .results {
+        display:flex;
+        flex-direction: column;
+        flex-wrap:wrap;
+        align-content:center;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    img {
+        width:100%;
+        box-shadow:5px 5px 5px rgba($color: #010508, $alpha: 0.5);
+    }
 
 
     h3 {
