@@ -9,11 +9,11 @@ form {
         width: 100%;
         line-height: 16px;
         margin: 10px 0;
-    }
-
-    button {
-        font-family: inherit;
-        font-size: 100%;
+        &:hover[type=submit] {
+            background:#264c70;
+            color:rgb(230, 230, 230);
+            box-shadow: 2px 2px 5px rgb(117, 117, 139);
+        }
     }
 
     select {
