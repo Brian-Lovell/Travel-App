@@ -34,12 +34,28 @@ section {
 
 #resultsSection {
     display:grid;
-    grid-template-columns: 2fr 2fr 1fr 1fr 1fr ;
+    grid-template-columns: auto ;
     grid-template-areas:
-    "iH iH h h h"
-    "i i dH d d"
-    "i i lH ci co"
-    "i i fH wI wD";
+    "h"
+    "dH"
+    "d"
+    "lH"
+    "ci"
+    "co"
+    "fH"
+    "wI"
+    "wD"
+    "iH"
+    "i";
+
+    @media (min-width:900px) {
+        grid-template-columns: 2fr 2fr 1fr 1fr 1fr ;
+        grid-template-areas:
+        "iH iH h h h"
+        "i i dH d d"
+        "i i lH ci co"
+        "i i fH wI wD";
+    }
 
     .results {
         display:flex;
