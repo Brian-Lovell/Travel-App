@@ -39,6 +39,7 @@ section {
     "h"
     "dH"
     "d"
+    "cd"
     "lH"
     "ci"
     "co"
@@ -52,7 +53,7 @@ section {
         grid-template-columns: 2fr 2fr 1fr 1fr 1fr ;
         grid-template-areas:
         "iH iH h h h"
-        "i i dH d d"
+        "i i dH d cd"
         "i i lH ci co"
         "i i fH wI wD";
     }
@@ -90,6 +91,9 @@ section {
     #resultsDate {
         grid-area:d;
 
+    }
+    #countdown {
+        grid-area:cd;
     }
     #resultsCityName {
         grid-area:ci;
