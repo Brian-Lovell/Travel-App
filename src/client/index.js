@@ -77,9 +77,6 @@ import './images/main.png'
 import './images/pixabay_logo.png'
 
 
-console.log(validateInput);
-
-
 export {
     handleSubmit
 }
