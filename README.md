@@ -1,4 +1,13 @@
 # Travel Journal App
+This webapp uses data from three different APIs to help you plan a trip to a location.
+
+First the Client has a form that collects the Date and location information.
+
+Then the server will fetch to get the latitude longitue and country information from the Geonames API.
+
+Then that data is used to get the current weather from Weatherbit API.
+
+The location information is also used to find a picture to display from the Pixabay API.
 
 
 ## Dependcies
