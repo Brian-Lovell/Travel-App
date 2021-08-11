@@ -1,4 +1,4 @@
-import { checkForName } from './nameChecker'
+import { validateInput } from './inputChecker'
 
 function handleSubmit(event) {
     event.preventDefault()
