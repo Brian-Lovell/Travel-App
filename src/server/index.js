@@ -11,11 +11,13 @@ const { send } = require('process')
 
 // Start Express
 const app = express()
-const port = 2076
+// const port = 2076
 
-app.listen(port, function () {
-    console.log(`Listening on port ${port}!`)
-})
+module.exports = app
+
+// app.listen(port, function () {
+//     console.log(`Listening on port ${port}!`)
+// })
 
 //Parse URL-encoded data with querystring library
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,12 +32,16 @@ app.use(express.static('dist'))
 
 
 //API endpoint
-apiData = {}
+let apiData = {}
 
 // Get Route
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
+
+app.get('/test', async (req, res) => {
+    res.json({message: 'pass!'})
+  })
 
 // Post route 
 app.post('/submit', async function (req, res){
