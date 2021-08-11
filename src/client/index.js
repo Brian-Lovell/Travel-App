@@ -1,4 +1,4 @@
-import { checkForName } from './js/nameChecker'
+import { validateInput } from './js/inputChecker'
 import { handleSubmit } from './js/formHandler'
 
 import './styles/resets.scss'
@@ -78,11 +78,11 @@ import './images/main.png'
 import './images/pixabay_logo.png'
 
 
-console.log(checkForName);
+console.log(validateInput);
 
 
 export {
-    checkForName,
+    validateInput,
     handleSubmit
 }
 
