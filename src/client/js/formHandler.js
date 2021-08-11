@@ -1,5 +1,3 @@
-import { validateInput } from './inputChecker'
-
 function handleSubmit(event) {
     event.preventDefault()
 

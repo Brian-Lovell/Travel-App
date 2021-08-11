@@ -1,4 +1,3 @@
-import { validateInput } from './js/inputChecker'
 import { handleSubmit } from './js/formHandler'
 
 import './styles/resets.scss'
@@ -82,7 +81,6 @@ console.log(validateInput);
 
 
 export {
-    validateInput,
     handleSubmit
 }
 
