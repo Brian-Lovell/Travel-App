@@ -29,8 +29,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.png$/i,
-        type: 'asset/resource'
+        test: /\.png$/,
+        use: {
+          loader: 'url-loader',
+        }
       },
       {
         test: /\.css$/i,
@@ -39,7 +41,7 @@ module.exports = {
       {
         test: '/\.js$/',
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: "babel-loader",
       },
       {
         test: /\.scss$/,
