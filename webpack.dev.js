@@ -21,12 +21,12 @@ module.exports = {
     rules: [
       {
         test: /\.png$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
       },
       {
         test: '/\.js$/',
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: "babel-loader",
       },
       {
         test: /\.scss$/,
