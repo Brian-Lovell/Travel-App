@@ -52,7 +52,8 @@ function handleSubmit(event) {
         const weatherImg = document.getElementById('currentWeatherIcon')
         const iconCode = res.weather['icon']
         const fileExt = ".png"
-        const weatherIconImagePath = "./src/client/images" + "/" + iconCode + fileExt
+        const weatherBitIconURL = "https://www.weatherbit.io/static/img/icons/"
+        const weatherIconImagePath = weatherBitIconURL + iconCode + fileExt
         weatherImg.src = weatherIconImagePath
         weatherImg.alt = res.weather['description']
 
