@@ -30,9 +30,7 @@ module.exports = {
     rules: [
       {
         test: /\.png$/,
-        use: {
-          loader: 'url-loader',
-        }
+        type: 'asset/resource'
       },
       {
         test: /\.css$/i,
