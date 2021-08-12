@@ -1,12 +1,12 @@
+import 'regenerator-runtime/runtime'
 const app = require('../src/server/index.js')
-const supertest = require('supertest')
-const request = supertest(app)
+const request = require('supertest')
 
-it('Gets to the test endpoint', async done => {
-    const res = await request.get('/test')
 
-    expect(response.status).toBe(200)
-    expect(response.body.message).toBe('pass!')
-
-    done()
+test('Gets to the test endpoint', () => {
+    return request(app)
+        .get('/test')
+        .then(res => {
+            expect(res.statusCode).toBe(200)
+        })
 })
